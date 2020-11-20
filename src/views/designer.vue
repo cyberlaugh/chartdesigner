@@ -4,7 +4,7 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-07 10:19:30
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-11-09 10:36:28
+ * @LastEditTime: 2020-11-15 10:39:51
 -->
 <template>
   <div class="wrapper-designer">
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Toolbar from '@/components/toolbar'
-import Board from '@/components/board'
+import Toolbar from '@/customview/designtime/toolbar'
+import Board from '@/customview/designtime/board'
 export default {
     name:'Designer',
     components:{
