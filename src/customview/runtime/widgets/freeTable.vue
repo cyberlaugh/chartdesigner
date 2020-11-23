@@ -9,7 +9,6 @@
 -->
 <script type="text/jsx">
 import { loadTableData } from '../api/dataLoader'
-import { cloneDeep, merge } from 'lodash'
 import mixin from './mixin'
 
 export default {
@@ -27,7 +26,7 @@ export default {
     },
     methods:{
         loadData(params){
-            this.tableData = loadTableData(merge({},this.dataSource,params))
+            this.tableData = loadTableData(this.merge({},this.dataSource,params))
         },
         getValue(){
             return this
@@ -43,16 +42,15 @@ export default {
                 })
                 this.headerText = headerText
             }
-            console.log('this.headerText', this.headerText)
         }
     },
     created(){
         this.dataSource = {...this.cfg.dataSource}
-        this.template = cloneDeep(this.cfg.template)
+        this.template = this.cloneDeep(this.cfg.template)
         this.headerText = this.template.header.text
         this.footerText = this.template.footer.text
         
-        this.listen = cloneDeep(this.cfg.listen)        
+        this.listen = this.cloneDeep(this.cfg.listen)        
         this.bindListenEvents(this.listen)
         
         if(!this.dataSource.lazyLoad){

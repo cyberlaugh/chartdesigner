@@ -4,11 +4,12 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-12 11:43:50
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-11-17 13:56:59
+ * @LastEditTime: 2020-11-20 11:25:42
  */
 
 import Line from './render/line'
 import Bar from './render/bar'
+import Pie from './render/pie'
 
 export default {
     prefixId:'cv-chart_',
@@ -28,6 +29,9 @@ export default {
             case 'bar':
                 chart = new Bar(dom,cfg)
                 break;
+            case 'pie':
+            case 'ring':
+                chart = new Pie(dom,cfg)
         }
         return chart
     }

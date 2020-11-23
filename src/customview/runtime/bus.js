@@ -4,7 +4,7 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-14 15:16:55
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-11-19 17:38:45
+ * @LastEditTime: 2020-11-21 13:34:42
  */
 import Vue from 'vue'
 import { merge } from 'lodash'
@@ -111,7 +111,6 @@ busRuntime.getCompValue = function(id) {
      let eventName
      const executeAction = (action)=>{
         return function(event){
-            console.log('event trigger',event)
             let parsedParams = null
             if(Array.isArray(action.params)){
                 parsedParams = {}
@@ -138,7 +137,6 @@ busRuntime.getCompValue = function(id) {
                 }
             }
             const comp = this.getComp(idComp)
-            console.log('listen events',comp,event)
             if(!comp) return
             if(typeof comp[action.method] !== 'function'){
                 throw `${action.method} not implemented!`

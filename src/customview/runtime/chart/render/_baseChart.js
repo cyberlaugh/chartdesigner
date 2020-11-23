@@ -4,7 +4,7 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-12 11:57:27
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-11-19 17:49:40
+ * @LastEditTime: 2020-11-20 11:11:17
  */
 import echarts from 'echarts'
 import { merge, cloneDeep } from 'lodash'
@@ -95,7 +95,8 @@ class BaseChart{
             this.setOption(newOption)
         }
         this.ec.setOption(this.option)
-        this.pendingToRender = false        
+        this.pendingToRender = false
+        console.log('getOption after draw',this.option)
     }
 }
 

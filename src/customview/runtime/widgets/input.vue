@@ -7,7 +7,7 @@
  * @LastEditTime: 2020-11-19 12:02:08
 -->
 <template>
-  <el-input class="cv-widget" :id="`cv-input_${id}`" v-model="value" :placeholder="placeholder" :style="style" @change="changeV" />
+  <el-input class="cv-widget cv-input" :id="`cv-input_${id}`" v-model="value" :placeholder="placeholder" :style="style" @change="changeV" />
 </template>
 
 <script>
