@@ -4,34 +4,65 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-07 10:00:05
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-11-16 15:40:14
+ * @LastEditTime: 2020-12-02 10:00:17
 -->
 <template>
   <div id="app">
-    <designer v-if="showDesign" />
-    <custom-page v-else />
-    <el-button @click="showDesign = !showDesign">切换设计-运行页面</el-button>
-    <el-button @click="showRuntimeComps">控制台打印运行时页面组件</el-button>
+    <list-design-pages v-show="!showDesign && !showRuntime" @edit="editPage" @preview="preview"></list-design-pages>
+    <designer v-if="showDesign" :pageInfo="pageInfo"/>
+    <custom-page v-if="showRuntime" :idPage="pageInfo.id"/>
+    <div>
+      <el-button @click="backToList">返回设计列表</el-button>
+      <el-button @click="getOutPutDesigner">设计输出JSON</el-button>
+      <el-button @click="showRuntimeComps">控制台打印运行时页面组件</el-button>
+    </div>
+   
   </div>
 </template>
 
 <script>
-import Designer from './views/designer'
-import CustomPage from './views/customPage'
+import Designer from './customview/designtime/views/designer'
+import CustomPage from './customview/runtime/views/customPage'
+import ListDesignPages from './customview/designtime/views/designList'
 export default {
   name: 'App',
   components: {
     Designer,
-    CustomPage
+    CustomPage,
+    ListDesignPages
   },
   data(){
     return {
-      showDesign:false
+      showDesign:false,
+      showRuntime:false,
+      pageInfo:{
+        id:'',
+        title:'',
+        creator:'luanf'
+      }
     }
   },
   methods: {
     showRuntimeComps(){
       console.log('控制台打印运行时页面组件', this.$cvr.getAllComps())
+    },
+    openDesign(){
+      this.showDesign = !this.showDesign
+    },
+    backToList(){
+      this.showDesign = false
+      this.showRuntime = false
+    },
+    getOutPutDesigner(){
+      console.log('getOutPutDesigner',this.$store.getters['designer/getClonedElementCfg'](this.pageInfo.id))
+    },
+    editPage(pageInfo){
+      this.pageInfo = pageInfo
+      this.showDesign = true
+    },
+    preview(pageInfo){
+      this.pageInfo = pageInfo
+      this.showRuntime = true
     }
   }
 }

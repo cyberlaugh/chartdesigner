@@ -214,7 +214,7 @@ export default {
                 path:'<svg style="left: 1px; top: 1px; width: 32px; height: 30px; display: block; position: relative; overflow: hidden;"><g><g></g><g><g transform="translate(0.5,0.5)" style="visibility: visible;"><path d="M 6.9 6 L 29.1 6 C 29.93 6 30.6 6.67 30.6 7.5 L 30.6 22.5 C 30.6 23.33 29.93 24 29.1 24 L 2.7 24 C 1.87 24 1.2 23.33 1.2 22.5 L 1.2 12 L 6.9 6 Z" fill="#ffffff" stroke="#000000" stroke-width="1.3" stroke-miterlimit="10" pointer-events="all"></path></g></g><g></g><g></g></g></svg>',
                 iconName:'',
                 text:'html view',
-                command:'htmlView'
+                command:'htmlFragment'
               },{
                 path:'<svg style="left: 1px; top: 1px; width: 32px; height: 30px; display: block; position: relative; overflow: hidden;"><g><g></g><g><g transform="translate(0.5,0.5)" style="visibility: visible;"><rect x="2.66" y="1.52" width="26.6" height="26.6" rx="1.9" ry="1.9" fill="#ffffff" stroke="#000000" stroke-width="1.3" pointer-events="all"></rect><path d="M 2.66 7.22 L 29.26 7.22" fill="none" stroke="white" stroke-width="9.3" stroke-miterlimit="10" pointer-events="stroke" visibility="hidden"></path><path d="M 2.66 7.22 L 29.26 7.22" fill="none" stroke="#000000" stroke-width="1.3" stroke-miterlimit="10" pointer-events="all"></path><path d="M 8.36 1.52 L 8.36 28.12" fill="none" stroke="white" stroke-width="9.3" stroke-miterlimit="10" pointer-events="stroke" visibility="hidden"></path><path d="M 8.36 1.52 L 8.36 28.12" fill="none" stroke="#000000" stroke-width="1.3" stroke-miterlimit="10" pointer-events="all"></path></g></g><g></g><g></g></g></svg>',
                 iconName:'',
