@@ -107,9 +107,9 @@ export default {
     pageInfo(){
       const pageCfg = this.$store.getters['designer/getPageCfg']()
       if(pageCfg){        
-        return {title:pageCfg.title, id:pageCfg.id}
+        return { title:pageCfg.title, id:pageCfg.id }
       }else{
-        return {title:'undefined', id:'-1'}
+        return { title:'undefined', id:'-1' }
       }
     }
   },

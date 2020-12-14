@@ -4,7 +4,7 @@
  * @Autor: Luan Feng
  * @Date: 2020-11-07 10:19:30
  * @LastEditors: Luan Feng
- * @LastEditTime: 2020-12-04 17:33:22
+ * @LastEditTime: 2020-12-14 15:27:02
 -->
 <template>
     <div>
@@ -60,6 +60,7 @@ export default {
             }
             this.$store.dispatch('designer/initPage',pageCfg)
             this.pageCfg = cloneDeep(pageCfg)
+            console.log('页面配置', this.pageCfg)
             this.canvasStyle = {...pageCfg.style}
         },
         savePageCfg(){

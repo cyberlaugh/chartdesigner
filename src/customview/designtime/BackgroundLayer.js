@@ -5,15 +5,14 @@ class BackgroundLayer{
         this.zr = editor.zr
         this.$cvd = editor.$cvd
         this.isShowGridLine = false
-        
         this.backStyle={
             style:{
-                fill:'#ffffff'
+                fill: editor.data.backgroundColor || '#ffffff'
             }
         }
         this.gridStyle = {
             style: {
-                stroke: '#b3b3b3',
+                stroke: editor.data.gridColor || '#b3b3b3',
                 lineWidth:.5
             }
         }
@@ -24,17 +23,16 @@ class BackgroundLayer{
         this.drawBackground()
         // 网格线
         this.groupLines = null
-        this.initEventListeners()        
+        this.initEventListeners()
+        if(editor.data.gridShow){
+            this.drawGrid()
+        }
     }
     initEventListeners(){
-        this.$cvd.on('updateBackgroundStyle',this.updateBackgroundStyle, this)
-        this.$cvd.on('updateGridColor',this.updateGridColor, this)
-        this.$cvd.on('toggleShowGrid',this.toggleGridShow, this) 
+        this.$cvd.on('updatePageStyle',this.updateBackgroundStyle, this)
     }
     removeEventListeners(){        
-        this.$cvd.off('updateBackgroundFill',this.updateBackgroundStyle)
-        this.$cvd.off('updateGridColor',this.updateGridColor)
-        this.$cvd.off('togtoggleGridShowgle', this.toggleGridShow)
+        this.$cvd.off('updatePageStyle',this.updateBackgroundStyle)
     }
     drawBackground(){
         const zr = this.zr
@@ -57,8 +55,23 @@ class BackgroundLayer{
         zr.add(this.backRect);
     }
     updateBackgroundStyle(cfg){
-        zrender.util.merge(this.backStyle,cfg,true)        
-        this.backRect.attr(this.backStyle)
+        //如果画布大小变化,editor会调用resize
+        //如果背景色改变
+        if(cfg.backgroundColor !== this.backStyle.style.fill){     
+            let newBackStyle = {
+                style:{
+                fill: cfg.backgroundColor
+            }}       
+            zrender.util.merge(this.backStyle,newBackStyle,true)        
+            this.backRect.attr(this.backStyle)
+        }
+        //网格线变化
+        if(this.isShowGridLine !== cfg.gridShow){
+            this.toggleGridShow(cfg.gridShow)
+        }
+        if(this.gridStyle.style.stroke !== cfg.gridColor){
+            this.updateGridColor(cfg.gridColor)
+        }
     }
     updateGridColor(color){
         zrender.util.merge(this.gridStyle,{style:{stroke:color}},true)
